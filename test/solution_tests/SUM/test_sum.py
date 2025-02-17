@@ -10,4 +10,3 @@ class TestSum():
             sum_solution.compute(-1, 2)
         except ValueError as e:
             assert str(e) == "x and y should be between 0 and 100"
-
