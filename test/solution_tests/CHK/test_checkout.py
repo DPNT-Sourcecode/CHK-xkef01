@@ -25,3 +25,7 @@ class TestCheckout():
         checkout = checkout_solution.checkout("EEB")
         assert checkout == 80
 
+    def test_checkout_special_offer_with_free_item_and_no_special_offer(self):
+        checkout = checkout_solution.checkout("EEEB")
+        assert checkout == 120
+

@@ -29,6 +29,7 @@
 
 def checkout(skus):
     # Define the price table and offers
+
     price_table = {
         'A': {'price': 50, 'offer': {'quantity': 3, 'offer_price': 130}},
         'B': {'price': 30, 'offer': {'quantity': 2, 'offer_price': 45}},
@@ -56,7 +57,7 @@ def checkout(skus):
             
             if offer and count >= offer['quantity']:
                 # this line is erroring because E does not have an offer price
-                offer_price = offer['offer_price'] if 'offer_price' in offer else 0
+                offer_price = offer['offer_price'] if 'offer_price' in offer else price * count
                 offer_count = count // offer['quantity']
                 remaining_count = count % offer['quantity']
                 total_price += offer_count * offer_price + remaining_count * price
