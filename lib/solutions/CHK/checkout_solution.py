@@ -55,7 +55,8 @@ def checkout(skus):
             offer = price_table[item]['offer']
             
             if offer and count >= offer['quantity']:
-                offer_price = offer['offer_price']
+                # this line is erroring because E does not have an offer price
+                offer_price = offer['offer_price'] if 'offer_price' in offer else 0
                 offer_count = count // offer['quantity']
                 remaining_count = count % offer['quantity']
                 total_price += offer_count * offer_price + remaining_count * price
@@ -67,4 +68,5 @@ def checkout(skus):
                 total_price += count * price
     
     return total_price
+
 
