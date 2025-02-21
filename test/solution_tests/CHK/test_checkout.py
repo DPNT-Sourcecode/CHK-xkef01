@@ -13,7 +13,7 @@ class TestCheckout():
         checkout = checkout_solution.checkout("AAA")
         assert checkout == 130
     
-    def test_checkout_secondd_special_offer(self):
+    def test_checkout_second_special_offer(self):
         checkout = checkout_solution.checkout("AAAAA")
         assert checkout == 200
 

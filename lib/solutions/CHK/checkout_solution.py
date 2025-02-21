@@ -51,6 +51,7 @@ def checkout(skus):
             item_count[item] = 1
 
     # Calculate the total price based on the price table and offers
+    total_price = 0  # Initialize total_price to 0
     for item, count in item_count.items():
         if item in price_table:
             price = price_table[item]['price']
@@ -77,4 +78,5 @@ def checkout(skus):
                 total_price += count * price
     
     return total_price
+
 
