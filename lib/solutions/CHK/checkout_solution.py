@@ -1,6 +1,8 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 
+
+
 def checkout(skus):
     # Define the price table and offers
     
@@ -17,12 +19,7 @@ def checkout(skus):
             return -1
         
     # Count the number of each item
-    item_count = {}
-    for item in skus:
-        if item in item_count:
-            item_count[item] += 1
-        else:
-            item_count[item] = 1
+    item_count = count_items(skus)
 
     # Calculate the total price based on the price table and offers
     total_price = 0  # Initialize total_price to 0
@@ -32,15 +29,12 @@ def checkout(skus):
             offers = price_table[item]['offer']
             
             if len(offers)> 0:
-                best_offer = None
-                for offer in offers:
-                    if count >= offer['quantity']:
-                        # the best offer is the one with the highest quantity
-                        if not best_offer or offer['quantity'] > best_offer['quantity']:
-                            best_offer = offer
+                best_offer = get_best_offer(offers, count)
                 
                 if best_offer:
                     offer_count = count // best_offer['quantity']
+                    # the remaining count has to be iterated over to calculate the total price
+
                     remaining_count = count % best_offer['quantity']
                     # E does not have an offer price
                     if item != 'E':
@@ -59,3 +53,21 @@ def checkout(skus):
                 total_price += count * price
     
     return total_price
+
+def count_items(skus):
+    item_count = {}
+    for item in skus:
+        if item in item_count:
+            item_count[item] += 1
+        else:
+            item_count[item] = 1
+    return item_count
+
+def get_best_offer(offers, count):
+    best_offer = None
+    for offer in offers:
+        if count >= offer['quantity']:
+            # the best offer is the one with the highest quantity
+            if not best_offer or offer['quantity'] > best_offer['quantity']:
+                best_offer = offer
+    return best_offer
