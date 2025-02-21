@@ -1,31 +1,5 @@
-
-
 # noinspection PyUnusedLocal
 # skus = unicode string
-
-# The checkout feature is great and our supermarket is doing fine. Is time to think about growth.
-# Our marketing teams wants to experiment with new offer types and we should do our best to support them.
-
-# We are going to sell a new item E.
-# Normally E costs 40, but if you buy 2 of Es you will get B free. How cool is that ? Multi-priced items also seemed to work well so we should have more of these.
-
-# Our price table and offers: 
-# +------+-------+------------------------+
-# | Item | Price | Special offers         |
-# +------+-------+------------------------+
-# | A    | 50    | 3A for 130, 5A for 200 |
-# | B    | 30    | 2B for 45              |
-# | C    | 20    |                        |
-# | D    | 15    |                        |
-# | E    | 40    | 2E get one B free      |
-# +------+-------+------------------------+
-
-
-# Notes: 
-#  - The policy of the supermarket is to always favor the customer when applying special offers.
-#  - All the offers are well balanced so that they can be safely combined.
-#  - For any illegal input return -1
-
 
 def checkout(skus):
     # Define the price table and offers
@@ -73,7 +47,6 @@ def checkout(skus):
 
                         total_price += offer_count * best_offer['offer_price'] + remaining_count * price
                     else:
-                        print(best_offer['quantity'] , remaining_count)
                         total_price += best_offer['quantity'] * price + remaining_count * price
 
                     if item == 'E':
@@ -86,6 +59,7 @@ def checkout(skus):
                 total_price += count * price
     
     return total_price
+
 
 
 
