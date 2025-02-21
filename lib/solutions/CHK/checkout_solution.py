@@ -61,7 +61,8 @@ def checkout(skus):
                 best_offer = None
                 for offer in offers:
                     if count >= offer['quantity']:
-                        if not best_offer or offer['offer_price'] < best_offer['offer_price']:
+                        # the best offer is the one with the highest quantity
+                        if not best_offer or offer['quantity'] > best_offer['quantity']:
                             best_offer = offer
                 
                 if best_offer:
@@ -78,6 +79,7 @@ def checkout(skus):
                 total_price += count * price
     
     return total_price
+
 
 
 
