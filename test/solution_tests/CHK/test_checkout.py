@@ -16,4 +16,8 @@ class TestCheckout():
     def test_checkout_special_offer_and_no_special_offer(self):
         checkout = checkout_solution.checkout("BCB")
         assert checkout == 65
+    
+    def test_checkout_invalid_input(self):
+        checkout = checkout_solution.checkout("ABCD1")
+        assert checkout == -1
 
