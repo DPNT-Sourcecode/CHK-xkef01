@@ -12,6 +12,10 @@ class TestCheckout():
     def test_checkout_special_offer(self):
         checkout = checkout_solution.checkout("AAA")
         assert checkout == 130
+    
+    def test_checkout_secondd_special_offer(self):
+        checkout = checkout_solution.checkout("AAAAA")
+        assert checkout == 200
 
     def test_checkout_special_offer_and_no_special_offer(self):
         checkout = checkout_solution.checkout("BCB")
@@ -28,4 +32,3 @@ class TestCheckout():
     def test_checkout_special_offer_with_free_item_and_no_special_offer(self):
         checkout = checkout_solution.checkout("EEEB")
         assert checkout == 120
-
