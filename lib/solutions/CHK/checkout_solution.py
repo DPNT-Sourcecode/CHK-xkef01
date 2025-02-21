@@ -73,8 +73,9 @@ def checkout(skus):
 
                         total_price += offer_count * best_offer['offer_price'] + remaining_count * price
                     else:
-                        total_price += offer_count * price + remaining_count * price
-                        
+                        print(best_offer['quantity'] , remaining_count)
+                        total_price += best_offer['quantity'] * price + remaining_count * price
+
                     if item == 'E':
                         free_item = best_offer['free_item']
                         free_item_count = min(offer_count, item_count.get(free_item, 0))
@@ -85,6 +86,7 @@ def checkout(skus):
                 total_price += count * price
     
     return total_price
+
 
 
 
