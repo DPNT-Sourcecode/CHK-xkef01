@@ -48,3 +48,15 @@ class TestCheckout():
     def test_checkout_double_same_special_offer(self):
         checkout = checkout_solution.checkout("AAAAAAAAAA")
         assert checkout == 400
+
+    def test_checkout_F_offer(self):
+        checkout = checkout_solution.checkout("FFF")
+        assert checkout == 20
+
+    def test_checkout_F_offer_with_other_item(self):
+        checkout = checkout_solution.checkout("FFFA")
+        assert checkout == 70
+
+    def test_checkout_F_offer_with_no_offer(self):
+        checkout = checkout_solution.checkout("FFFFF")
+        assert checkout == 40

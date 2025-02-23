@@ -11,7 +11,8 @@ def checkout(skus):
         'B': {'price': 30, 'offer': [{'quantity': 2, 'offer_price': 45}]},
         'C': {'price': 20, 'offer': []},
         'D': {'price': 15, 'offer': []},
-        'E': {'price': 40, 'offer': []}#{'quantity': 2, 'free_item': 'B'}
+        'E': {'price': 40, 'offer': []},
+        'F': {'price': 10, 'offer': [{'quantity': 3, 'offer_price': 20}]}
     }
 
     free_items = {
