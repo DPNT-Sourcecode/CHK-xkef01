@@ -34,7 +34,7 @@ class TestCheckout():
         assert checkout == 120
 
     def test_checkout_multiple_special_offer_with_free_item(self):
-        checkout = checkout_solution.checkout("EEEBBB")
+        checkout = checkout_solution.checkout("EEEEBB")
         assert checkout == 160
 
     def test_checkout_multiple_special_offer(self):
