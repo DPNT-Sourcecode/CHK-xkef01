@@ -13,6 +13,10 @@ def checkout(skus):
         'D': {'price': 15, 'offer': []},
         'E': {'price': 40, 'offer': [{'quantity': 2, 'free_item': 'B'}]}
     }
+
+    free_items = {
+        'E': {'free_item': 'B', 'quantity': 2}
+    }
     # Check if the input is valid
     for item in skus:
         if item not in price_table:
@@ -88,3 +92,4 @@ def get_best_offer(offers, count):
             if not best_offer or offer['quantity'] > best_offer['quantity']:
                 best_offer = offer
     return best_offer
+
