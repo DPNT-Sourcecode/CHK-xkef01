@@ -72,7 +72,7 @@ def checkout(skus):
         'Q': {'associated_item': 'R', 'quantity': 3},
     }
 
-    any_three_items = ['X', 'S', 'T', 'Y', 'Z'] #arranged in ascending order of price
+    any_three_items = ['S', 'T', 'X', 'Y', 'Z']
     any_three_items_offer_price = 45
 
     # Check if the input is valid
@@ -142,12 +142,13 @@ def get_best_offer(offers, count):
                 best_offer = offer
     return best_offer
 
-def get_any_three_items_total_offer_price(item_count, any_three_items, any_three_items_offer_price):
+def get_any_three_items_total_offer_price(item_count, any_three_items, any_three_items_offer_price, price_table):
     offer_price = 0
     any_three_item_count = {item: item_count[item] for item in any_three_items if item in item_count}
     any_three_item_quantity = sum(any_three_item_count.values())
     offer_count = any_three_item_quantity // 3
     remaining_count = any_three_item_quantity % 3
     offer_price = offer_count * any_three_items_offer_price
-    offer_price += remaining_count * min([item_count[item] for item in any_three_items if item in item_count])
+    sorted_any_three_item_count_by_price = sorted(any_three_item_count.items(), key=lambda x: price_table[x[0]]['price'])
+    offer_price += remaining_count * min([price_table[item]["price"] for item in any_three_items if item in item_count])
     return  offer_price
