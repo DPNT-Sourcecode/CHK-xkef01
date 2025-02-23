@@ -43,6 +43,7 @@ def checkout(skus):
                             total_price += offer_count * best_offer['offer_price'] #+ remaining_count * price
                         else:
                             total_price += best_offer['quantity'] * price #+ remaining_count * price
+                        #this is missing an important part of the logic, item B is only free if item E is listed first in the input
 
                         if item == 'E':
                             free_item = best_offer['free_item']
@@ -66,6 +67,18 @@ def count_items(skus):
             item_count[item] = 1
     return item_count
 
+# this function returns the best offer for a given quantity, it caluculates the the total price of the item given each offer and returns the lowest total price
+# def get_best_total_offer(offers, count):
+#     offer_total = []
+#     #best_offer = None
+#     for offer in offers:
+#         offer_total_price = 0
+#         if count >= offer['quantity']:
+#             # the best offer is the one with the highest quantity
+#             if not best_offer or offer['quantity'] > best_offer['quantity']:
+#                 best_offer = offer
+#     return best_offer
+
 def get_best_offer(offers, count):
     best_offer = None
     for offer in offers:
@@ -74,3 +87,4 @@ def get_best_offer(offers, count):
             if not best_offer or offer['quantity'] > best_offer['quantity']:
                 best_offer = offer
     return best_offer
+
