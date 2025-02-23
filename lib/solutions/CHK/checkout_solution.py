@@ -155,6 +155,13 @@ def get_any_three_items_total_offer_price(item_count, any_three_items, any_three
     offer_count = any_three_item_quantity // 3
     remaining_count = any_three_item_quantity % 3
     offer_price = offer_count * any_three_items_offer_price
+    while remaining_count > 0:
+        for item, count in sorted_any_three_item_count_by_price:
+            if count > remaining_count:
+                offer_price += remaining_count*price_table[item]["price"]
+                remaining_count = 0
+            else:
+                offer_price += count*price_table[item]["price"]
+                remaining_count -= count
     
-    offer_price += remaining_count * min([price_table[item]["price"] for item in any_three_items if item in item_count])
     return  offer_price
