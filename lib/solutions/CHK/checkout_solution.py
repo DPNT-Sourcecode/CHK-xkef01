@@ -154,7 +154,9 @@ def get_any_three_items_total_offer_price(item_count, any_three_items, any_three
     any_three_item_quantity = sum(any_three_item_count.values())
     offer_count = any_three_item_quantity // 3
     remaining_count = any_three_item_quantity % 3
+    #price for total multiple of 3 items
     offer_price = offer_count * any_three_items_offer_price
+    #price for remaining items using cheapest price
     while remaining_count > 0:
         for item, count in sorted_any_three_item_count_by_price:
             if count > remaining_count:
