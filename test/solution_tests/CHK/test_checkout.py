@@ -73,4 +73,8 @@ class TestCheckout():
         checkout = checkout_solution.checkout("XYZ")
         assert checkout == 45
 
+    def test_checkout_any_three_items_offer_with_cheapest_no_offer(self):    
+        checkout = checkout_solution.checkout("XYZYZ")
+        assert checkout == 45+20+17
+
     
