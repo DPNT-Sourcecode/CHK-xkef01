@@ -29,26 +29,29 @@ def checkout(skus):
             offers = price_table[item]['offer']
             
             if len(offers)> 0:
-                best_offer = get_best_offer(offers, count)
-                
-                if best_offer:
-                    offer_count = count // best_offer['quantity']
-                    # the remaining count has to be iterated over to calculate the total price
+                while count > 0:
+                    best_offer = get_best_offer(offers, count)
+                    
+                    if best_offer:
+                        offer_count = count // best_offer['quantity']
+                        print(offer_count)
 
-                    remaining_count = count % best_offer['quantity']
-                    # E does not have an offer price
-                    if item != 'E':
+                        remaining_count = count % best_offer['quantity']
+                        print(remaining_count)
+                        if item != 'E':
 
-                        total_price += offer_count * best_offer['offer_price'] + remaining_count * price
+                            total_price += offer_count * best_offer['offer_price'] #+ remaining_count * price
+                        else:
+                            total_price += best_offer['quantity'] * price #+ remaining_count * price
+
+                        if item == 'E':
+                            free_item = best_offer['free_item']
+                            free_item_count = min(offer_count, item_count.get(free_item, 0))
+                            total_price -= free_item_count * price_table[free_item]['price']
+                        count = remaining_count
                     else:
-                        total_price += best_offer['quantity'] * price + remaining_count * price
-
-                    if item == 'E':
-                        free_item = best_offer['free_item']
-                        free_item_count = min(offer_count, item_count.get(free_item, 0))
-                        total_price -= free_item_count * price_table[free_item]['price']
-                else:
-                    total_price += count * price
+                        total_price += count * price
+                        count = 0
             else:
                 total_price += count * price
     
@@ -71,3 +74,4 @@ def get_best_offer(offers, count):
             if not best_offer or offer['quantity'] > best_offer['quantity']:
                 best_offer = offer
     return best_offer
+
