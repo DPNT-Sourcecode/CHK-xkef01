@@ -37,6 +37,10 @@ class TestCheckout():
         checkout = checkout_solution.checkout("EEEEBB")
         assert checkout == 160
 
+    def test_checkout_multiple_E_and_B_item(self):
+        checkout = checkout_solution.checkout("BBBEE")
+        assert checkout == 125
+
     def test_checkout_multiple_special_offer(self):
         checkout = checkout_solution.checkout("AAAAAAAA")
         assert checkout == 330
@@ -44,3 +48,4 @@ class TestCheckout():
     def test_checkout_double_same_special_offer(self):
         checkout = checkout_solution.checkout("AAAAAAAAAA")
         assert checkout == 400
+
