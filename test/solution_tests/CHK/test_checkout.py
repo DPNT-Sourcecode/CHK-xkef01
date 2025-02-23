@@ -60,3 +60,13 @@ class TestCheckout():
     def test_checkout_F_offer_with_no_offer(self):
         checkout = checkout_solution.checkout("FFFFF")
         assert checkout == 40
+
+    def test_checkout_H_offer(self):
+        checkout = checkout_solution.checkout("HHHHH")
+        assert checkout == 45
+    
+    def test_checkout_H_offer_with_no_offer(self):
+        checkout = checkout_solution.checkout("HHHHHH")
+        assert checkout == 55
+
+    
