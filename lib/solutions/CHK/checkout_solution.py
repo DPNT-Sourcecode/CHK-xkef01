@@ -88,5 +88,3 @@ def get_best_offer(offers, count):
             if not best_offer or offer['quantity'] > best_offer['quantity']:
                 best_offer = offer
     return best_offer
-
-
