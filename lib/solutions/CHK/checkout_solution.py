@@ -72,7 +72,9 @@ def checkout(skus):
         'Q': {'associated_item': 'R', 'quantity': 3},
     }
 
-    any_three_items_offer = ['S', 'T', 'X', 'Y', 'Z']
+    any_three_items = ['X', 'S', 'T', 'Y', 'Z'] #arranged in ascending order of price
+    any_three_items_offer_price = 45
+
     # Check if the input is valid
     for item in skus:
         if item not in price_table:
@@ -137,3 +139,17 @@ def get_best_offer(offers, count):
             if not best_offer or offer['quantity'] > best_offer['quantity']:
                 best_offer = offer
     return best_offer
+
+def get_any_three_items_offer_count_and_total_price(item_count, any_three_items, any_three_items_offer_price):
+    offer_price = 0
+    remaining_items_count = {}
+    any_three_item_count = {item: item_count[item] for item in any_three_items if item in item_count}
+    any_three_item_quantity = sum(any_three_item_count.values())
+    offer_count = any_three_item_quantity // 3
+    remaining_count = any_three_item_quantity % 3
+    offer_price = offer_count * any_three_items_offer_price
+    for item in any_three_items:
+        if item in item_count:
+            offer_items_count[item] = offer_count * 3
+        
+    return offer_items_count, offer_price
