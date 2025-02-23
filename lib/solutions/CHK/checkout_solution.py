@@ -84,11 +84,12 @@ def checkout(skus):
     item_count = count_items(skus)
     free_item_count = get_free_item_count(item_count, free_items)
     item_count_minus_free_items = {item: item_count[item] - free_item_count.get(item, 0) for item in item_count}
-    any
+    any_three_offer_total_price = get_any_three_items_total_offer_price(item_count_minus_free_items, any_three_items, any_three_items_offer_price)
+    item_count_minus_free_items_and_any_three_items = {item: item_count_minus_free_items[item] for item in item_count_minus_free_items if item not in any_three_items}
 
     # Calculate the total price based on the price table and offers
-    total_price = 0  # Initialize total_price to 0
-    for item, count in item_count_minus_free_items.items():
+    total_price = any_three_offer_total_price  # Initialize total_price to any three items offer price
+    for item, count in item_count_minus_free_items_and_any_three_items.items():
         if item in price_table:
             price = price_table[item]['price']
             offers = price_table[item]['offer']
@@ -141,7 +142,8 @@ def get_best_offer(offers, count):
                 best_offer = offer
     return best_offer
 
-def get_any_three_items_
+def get_any_three_items_total_offer_price(item_count, any_three_items, any_three_items_offer_price):
+    offer_price = 0
     any_three_item_count = {item: item_count[item] for item in any_three_items if item in item_count}
     any_three_item_quantity = sum(any_three_item_count.values())
     offer_count = any_three_item_quantity // 3
