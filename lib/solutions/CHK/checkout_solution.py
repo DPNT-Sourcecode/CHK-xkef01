@@ -34,10 +34,10 @@ def checkout(skus):
                     
                     if best_offer:
                         offer_count = count // best_offer['quantity']
-                        print(f"offer_count: {offer_count}")
+                        print(f"item:{item}, offer_count: {offer_count}")
 
                         remaining_count = count % best_offer['quantity']
-                        print(f"remaining_count: {remaining_count}")
+                        print(f"item:{item},remaining_count: {remaining_count}")
                         if item != 'E':
 
                             total_price += offer_count * best_offer['offer_price'] #+ remaining_count * price
@@ -53,6 +53,7 @@ def checkout(skus):
                     else:
                         total_price += count * price
                         count = 0
+                    print(f"item:{item},total_price: {total_price}")
             else:
                 total_price += count * price
     
@@ -87,4 +88,5 @@ def get_best_offer(offers, count):
             if not best_offer or offer['quantity'] > best_offer['quantity']:
                 best_offer = offer
     return best_offer
+
 
