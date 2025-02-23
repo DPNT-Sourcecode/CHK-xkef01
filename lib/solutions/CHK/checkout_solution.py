@@ -15,7 +15,7 @@ def checkout(skus):
     }
 
     free_items = {
-        'E': {'free_item': 'B', 'quantity': 2}
+        'B': {'associated_item': 'E', 'quantity': 2}
     }
     # Check if the input is valid
     for item in skus:
@@ -72,6 +72,15 @@ def count_items(skus):
             item_count[item] = 1
     return item_count
 
+def get_free_item_count(item_count, free_items):
+    free_item_count = {}
+    for free_item in free_items:
+        if free_item in item_count and free_items[free_item]['associated_item'] in item_count:
+            associated_item_count = item_count[free_items[free_item]['associated_item']]
+            free_item_count[free_item] = associated_item_count // free_items[free_item]['quantity']
+    return free_item_count
+            
+   
 # this function returns the best offer for a given quantity, it caluculates the the total price of the item given each offer and returns the lowest total price
 # def get_best_total_offer(offers, count):
 #     offer_total = []
@@ -92,4 +101,5 @@ def get_best_offer(offers, count):
             if not best_offer or offer['quantity'] > best_offer['quantity']:
                 best_offer = offer
     return best_offer
+
 
