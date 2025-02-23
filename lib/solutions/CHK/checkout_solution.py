@@ -47,7 +47,7 @@ def checkout(skus):
         'H': {'price': 10, 'offer': [{'quantity': 5, 'offer_price': 45}, {'quantity': 10, 'offer_price': 80}]},
         'I': {'price': 35, 'offer': []},
         'J': {'price': 60, 'offer': []},
-        'K': {'price': 80, 'offer': [{'quantity': 2, 'offer_price': 150}]},
+        'K': {'price': 70, 'offer': [{'quantity': 2, 'offer_price': 120}]},
         'L': {'price': 90, 'offer': []},
         'M': {'price': 15, 'offer': []},
         'N': {'price': 40, 'offer': []},
@@ -55,14 +55,14 @@ def checkout(skus):
         'P': {'price': 50, 'offer': [{'quantity': 5, 'offer_price': 200}]},
         'Q': {'price': 30, 'offer': [{'quantity': 3, 'offer_price': 80}]},
         'R': {'price': 50, 'offer': []},
-        'S': {'price': 30, 'offer': []},
+        'S': {'price': 20, 'offer': []},
         'T': {'price': 20, 'offer': []},
         'U': {'price': 40, 'offer': [{'quantity': 4, 'offer_price': 120}]},
         'V': {'price': 50, 'offer': [{'quantity': 2, 'offer_price': 90}, {'quantity': 3, 'offer_price': 130}]},
         'W': {'price': 20, 'offer': []},
-        'X': {'price': 90, 'offer': []},
-        'Y': {'price': 10, 'offer': []},
-        'Z': {'price': 50, 'offer': []},
+        'X': {'price': 17, 'offer': []},
+        'Y': {'price': 20, 'offer': []},
+        'Z': {'price': 21, 'offer': []},
 
     }
 
@@ -71,6 +71,8 @@ def checkout(skus):
         'M': {'associated_item': 'N', 'quantity': 3},
         'Q': {'associated_item': 'R', 'quantity': 3},
     }
+
+    any_three_items_offer = ['S', 'T', 'X', 'Y', 'Z']
     # Check if the input is valid
     for item in skus:
         if item not in price_table:
@@ -135,6 +137,3 @@ def get_best_offer(offers, count):
             if not best_offer or offer['quantity'] > best_offer['quantity']:
                 best_offer = offer
     return best_offer
-
-
-
